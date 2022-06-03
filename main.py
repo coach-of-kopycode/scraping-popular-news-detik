@@ -1,5 +1,5 @@
 import requests
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 
 
 def scraping_data():
@@ -9,7 +9,7 @@ def scraping_data():
         return None
 
     if content.status_code == 200:
-        soup = bs.BeautifulSoup(content.text, 'html.parser')
+        soup = BeautifulSoup(content.text, 'html.parser')
 
         last_update = soup.find('div', {'class': 'page__indeks-info font-base-semibold'})
         print(f'Daftar berita terpopuler, {last_update.text}')
