@@ -50,7 +50,6 @@ def show_data(data):
         print(f'{data[1][i]}\n')
 
 
-
 if __name__ == '__main__':
     print('Detik.com')
     result = scraping_data()
