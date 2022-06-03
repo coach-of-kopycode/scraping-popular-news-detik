@@ -1,1 +1,1 @@
-# scraping-popular-news-indonesia
+# scraping-popular-news-detik
