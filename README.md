@@ -1,1 +1,3 @@
-# scraping-popular-news-detik
+# Scraping Popular News from Detik.com
+
+Author Todi Rahmat
