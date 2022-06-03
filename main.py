@@ -1,5 +1,5 @@
-import bs4
 import requests
+from bs4 import BeautifulSoup as bs
 
 
 def scraping_data():
@@ -9,12 +9,32 @@ def scraping_data():
         return None
 
     if content.status_code == 200:
-        soup = bs4.BeautifulSoup(content.text, 'html.parser')
+        soup = bs.BeautifulSoup(content.text, 'html.parser')
+
         last_update = soup.find('div', {'class': 'page__indeks-info font-base-semibold'})
-        print(f'Daftar berita terpopuler, {last_update.text}\n')
+        print(f'Daftar berita terpopuler, {last_update.text}')
 
         titles = soup.findAll(attrs={'class': 'media__title'})
-        return titles
+        times = soup.findAll(attrs={'class': 'media__date'})
+        print(f'Total berita {len(titles)}\n')
+
+        list_titles = []
+        list_times = []
+        i = 1
+        j = 1
+
+        for title in titles:
+            title = title.text.strip()
+            list_titles.append(title)
+            i = i + 1
+
+        for time in times:
+            time = time.text.strip()
+            list_times.append(time)
+            j = j + 1
+
+        new_list = [list_titles, list_times]
+        return new_list
     else:
         return None
 
@@ -23,11 +43,10 @@ def show_data(data):
     if data is None:
         print('Data not found')
 
-    print(f'Total berita {len(data)}')
-
-    i = 1
-    for value in data:
-        print(f'{i}. {value.text.strip()}')
+    i = 0
+    for i in range(1, 20):
+        print(f'{i}. {data[0][i]}')
+        print(f'{data[1][i]}\n')
         i = i + 1
 
 
