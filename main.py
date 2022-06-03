@@ -43,11 +43,12 @@ def show_data(data):
     if data is None:
         print('Data not found')
 
-    i = 0
-    for i in range(1, 20):
-        print(f'{i}. {data[0][i]}')
+    number = 0
+    for i in range(0, len(data[0])):
+        number = number + 1
+        print(f'{number}. {data[0][i]}')
         print(f'{data[1][i]}\n')
-        i = i + 1
+
 
 
 if __name__ == '__main__':
