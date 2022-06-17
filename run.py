@@ -7,11 +7,6 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def home():
-    return render_template('index.html')
-
-
-@app.route('/detik')
 def scraping():
     content = requests.get('https://www.detik.com/terpopuler')
     soup = BeautifulSoup(content.text, 'html.parser')
@@ -38,7 +33,6 @@ def scraping():
         time = time.text.strip()
         list_times.append(time)
         j = j + 1
-
 
     new_list = [list_titles, list_times]
     return render_template('index.html', last_update=last_update, new_list=new_list)
